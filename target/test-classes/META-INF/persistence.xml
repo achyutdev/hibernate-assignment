@@ -4,14 +4,15 @@
 	version="2.0">
 	<persistence-unit name="cs544">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>cs544.lab04_1.model.Airline</class>
-		<class>cs544.lab04_1.model.Airplane</class>
-		<class>cs544.lab04_1.model.Airport</class>
-		<class>cs544.lab04_1.model.Flight</class>
+		<class>mum.edu.model.Artist</class>
+		<class>mum.edu.model.Charaters</class>
+		<class>mum.edu.model.Comment</class>
+		<class>mum.edu.model.Director</class>		
+		<class>mum.edu.model.Movie</class>
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="org.gjt.mm.mysql.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/cs544" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/movieImdb" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="mysql" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
