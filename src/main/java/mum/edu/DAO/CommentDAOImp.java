@@ -1,8 +1,7 @@
-package mum.edu.DAOImplementation;
+package mum.edu.DAO;
 
 import java.util.List;
 
-import mum.edu.DAO.CommentDAO;
 import mum.edu.models.Comment;
 
 public class CommentDAOImp implements CommentDAO {

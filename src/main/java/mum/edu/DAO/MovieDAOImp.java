@@ -1,8 +1,7 @@
-package mum.edu.DAOImplementation;
+package mum.edu.DAO;
 
 import java.util.List;
 
-import mum.edu.DAO.MovieDAO;
 import mum.edu.models.Movie;
 
 public class MovieDAOImp implements MovieDAO{

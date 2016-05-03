@@ -1,8 +1,7 @@
-package mum.edu.DAOImplementation;
+package mum.edu.DAO;
 
 import java.util.List;
 
-import mum.edu.DAO.AritistDAO;
 import mum.edu.models.Artist;
 
 public class ArtistDAOImp implements AritistDAO{
