@@ -13,18 +13,17 @@ public class Comment {
 	private int id;
 	
 	private String comments;
-	
-	@ManyToOne
-	@JoinColumn(name = "movie")
-	private Movie commentedMovie;
-	
-	
 
-	public Comment(int id, String comments, Movie commentedMovie) {
-		super();
-		this.id = id;
+	@ManyToOne
+	@JoinColumn(name = "movieId")
+	private Movie movie;
+	
+	
+	
+	
+	public Comment(String comments, Movie movie) {
 		this.comments = comments;
-		this.commentedMovie = commentedMovie;
+		this.movie = movie;
 	}
 
 	public int getId() {
@@ -43,14 +42,14 @@ public class Comment {
 		this.comments = comments;
 	}
 
-	public Movie getCommentedMovie() {
-		return commentedMovie;
+	public Movie getMovie() {
+		return movie;
 	}
 
-	public void setCommentedMovie(Movie commentedMovie) {
-		this.commentedMovie = commentedMovie;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
-	
+
 	
 	
 	

@@ -8,7 +8,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,19 +33,25 @@ public class Movie {
 	private Genre genre;
 	private String summary;
 	
-	@OneToMany(mappedBy="commentedMovie")
-	private List<String> comments;
+	@OneToMany(mappedBy="movie")
+	private List<Comment> comments;
+	
+	 @ManyToMany
+	  @JoinTable(
+	      name="mov_art",
+	      joinColumns=@JoinColumn(name="movie_ID"),
+	      inverseJoinColumns=@JoinColumn(name="artist_ID"))
+	private List<Artist> artists;
 
 	
 	
-	public Movie(String title, byte[] poster, Date releaseDate, Genre genre, String summary,
-			List<String> comments) {
+	public Movie(String title, byte[] poster, Date releaseDate, Genre genre, String summary,List<Artist> artists) {
 		this.title = title;
 		this.poster = poster;
 		this.releaseDate = releaseDate;
 		this.genre = genre;
 		this.summary = summary;
-		this.comments = comments;
+		this.artists =artists;
 	}
 
 	public int getId() {
@@ -93,11 +102,11 @@ public class Movie {
 		this.summary = summary;
 	}
 
-	public List<String> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<String> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 	
