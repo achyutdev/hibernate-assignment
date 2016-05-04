@@ -56,6 +56,7 @@ public class Application {
 		// Name of the artist
 		ArtistService artistService = new ArtistServiceImpl();
 		List<Artist> artists = artistService.findAll();
+		System.out.println(artists.isEmpty());
 		System.out.println("============================================");
 		for (Artist artist : artists) {
 			System.out.println(artist);

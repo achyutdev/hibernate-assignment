@@ -3,6 +3,7 @@ package mum.edu.DAO;
 import java.util.Date;
 import java.util.List;
 
+import mum.edu.models.Artist;
 import mum.edu.models.Characters;
 import mum.edu.models.Director;
 import mum.edu.models.Genre;
@@ -23,4 +24,11 @@ public interface MovieDAO {
 	public List<Characters> findAllCharacters(String characterName);
 
 	public List<Director> findAllDirector(String movieName);
+	
+	public void addArtist(Artist artist);
+	
+	public void deleteArtist(Artist artist);
+	
+	public void updateArtist(Artist artist);
+
 }

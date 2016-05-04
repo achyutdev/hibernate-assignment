@@ -11,5 +11,11 @@ public interface ArtistDAO {
 	public Artist getArtist(int id);
 
 	public List<Artist> getArtist(String name);
+	
+	public void addArtist(Artist artist);
+	
+	public void deleteArtist(Artist artist);
+	
+	public void updateArtist(Artist artist);
 
 }

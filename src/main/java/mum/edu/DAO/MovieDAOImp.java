@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import mum.edu.models.Artist;
 import mum.edu.models.Characters;
 import mum.edu.models.Director;
 import mum.edu.models.Genre;
@@ -78,6 +79,21 @@ public class MovieDAOImp implements MovieDAO{
 		List<Director> directors = (List<Director>)query.getResultList();
 		tx.commit();
 		return directors;
+	}
+
+	public void addArtist(Artist artist) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteArtist(Artist artist) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateArtist(Artist artist) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

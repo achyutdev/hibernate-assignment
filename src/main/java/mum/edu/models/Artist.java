@@ -14,7 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "Artist_type")
 
 public abstract class Artist {

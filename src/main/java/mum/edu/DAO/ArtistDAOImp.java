@@ -42,4 +42,19 @@ public class ArtistDAOImp implements ArtistDAO {
 		return artists;
 	}
 
+	public void addArtist(Artist artist) {
+		
+	}
+
+	public void deleteArtist(Artist artist) {
+		tx.begin();
+		em.remove(artist);
+		tx.commit();
+	}
+
+	public void updateArtist(Artist artist) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
