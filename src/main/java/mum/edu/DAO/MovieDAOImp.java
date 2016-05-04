@@ -20,63 +20,63 @@ public class MovieDAOImp implements MovieDAO{
 	
 	public List<Movie> getAllMovie() {
 		tx.begin();
-		Query query = em.createQuery("FROM Movie ");
+		Query query = em.createQuery("Select m FROM Movie m");
 		List<Movie> movies = query.getResultList();
-		em.close();
+		tx.commit();
 		return movies;
 	}
 
 	public Movie getMovie(int id) {
 		tx.begin();
 		Query query = em.createQuery("SELECT a FROM Movie a WHERE a.id = :id");
-		query.setParameter(0, id);
+		query.setParameter("id",id);
 		Movie movie = (Movie) query.getSingleResult();
-		em.close();
+		tx.commit();
 		return movie;
 	}
 
 	public List<Movie> getAllMovieGenre(Genre genre) {
 		tx.begin();
 		Query query = em.createQuery("SELECT a FROM Movie a WHERE a.genre = :genre");
-		query.setParameter(0, genre);
+		query.setParameter("genre", genre);
 		List<Movie> movies = query.getResultList();
-		em.close();
+		tx.commit();
 		return movies;
 	}
 
 	public List<Movie> getAllMovieRating(int rating) {
 		tx.begin();
 		Query query = em.createQuery("SELECT a FROM Movie a WHERE a.rating = :rating");
-		query.setParameter(0, rating);
+		query.setParameter("rating", rating);
 		List<Movie> movies = query.getResultList();
-		em.close();
+		tx.commit();
 		return movies;
 	}
 
 	public List<Movie> getAllMovieYear(Date date) {
 		tx.begin();
-		Query query = em.createQuery("SELECT a FROM Movie a WHERE a.date = :date");
-		query.setParameter(0, date);
+		Query query = em.createQuery("SELECT a FROM Movie a WHERE a.releaseDate = :date");
+		query.setParameter("date", date);
 		List<Movie> movies = query.getResultList();
-		em.close();
+		tx.commit();
 		return movies;
 	}
 
 	public List<Characters> findAllCharacters(String movName) {
 		tx.begin();
 		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.name = :movName ");
-		query.setParameter(0, movName);
+		query.setParameter("movName", movName);
 		List<Characters> characters = (List<Characters>)query.getResultList();
-		em.close();
+		tx.commit();
 		return characters;
 	}
 
 	public List<Director> findAllDirector(String movieName) {
 		tx.begin();
 		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.name = :movName ");
-		query.setParameter(0, movieName);
+		query.setParameter("movName", movieName);
 		List<Director> directors = (List<Director>)query.getResultList();
-		em.close();
+		tx.commit();
 		return directors;
 	}
 

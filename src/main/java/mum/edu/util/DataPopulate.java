@@ -32,11 +32,11 @@ public class DataPopulate {
 		// adding movies
 		byte[] poster1 = imageUpload("mov1.jpg");
 		Date releaseDate1 = formatter.parse("12-Jun-2013");
-		Movie mov1 = new Movie("mov 1", poster1, releaseDate1, Genre.ACTION, "mov 1 summary", null);
+		Movie mov1 = new Movie("mov 1", poster1, releaseDate1,9, Genre.ACTION, "mov 1 summary", null);
 
 		byte[] poster2 = imageUpload("mov1.jpg");
 		Date releaseDate2 = formatter.parse("7-Feb-2016");
-		Movie mov2 = new Movie("mov 2", poster2, releaseDate2, Genre.ACTION, "mov 2 summary", null);
+		Movie mov2 = new Movie("mov 2", poster2, releaseDate2,8, Genre.ACTION, "mov 2 summary", null);
 
 		em.persist(mov1);
 		em.persist(mov2);

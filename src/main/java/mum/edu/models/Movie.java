@@ -26,6 +26,9 @@ public class Movie {
 	@Lob
 	private byte[] poster;
 	
+	private int rating;
+	
+
 	@Temporal(TemporalType.DATE)
 	private Date releaseDate;
 	
@@ -43,13 +46,16 @@ public class Movie {
 	      inverseJoinColumns=@JoinColumn(name="artist_ID"))
 	private List<Artist> artists;
 
-	
+	public Movie(){
+		
+	}
 	
 
-	public Movie(String title, byte[] poster, Date releaseDate, Genre genre, String summary,List<Artist> artists) {
+	public Movie(String title, byte[] poster, Date releaseDate,int rating, Genre genre, String summary,List<Artist> artists) {
 		this.title = title;
 		this.poster = poster;
 		this.releaseDate = releaseDate;
+		this.rating =rating;
 		this.genre = genre;
 		this.summary = summary;
 		this.artists =artists;
@@ -119,6 +125,24 @@ public class Movie {
 	public void setArtists(List<Artist> artists) {
 		this.artists = artists;
 	}
+
+
+	public int getRating() {
+		return rating;
+	}
+
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", title=" + title + ", rating=" + rating + ", releaseDate=" + releaseDate
+				+ ", genre=" + genre + ", summary=" + summary + "]";
+	}
 	
 	
+
 }
