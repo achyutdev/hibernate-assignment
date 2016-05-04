@@ -64,7 +64,7 @@ public class MovieDAOImp implements MovieDAO{
 
 	public List<Characters> findAllCharacters(String movName) {
 		tx.begin();
-		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.name = :movName ");
+		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.title = :movName ");
 		query.setParameter("movName", movName);
 		List<Characters> characters = (List<Characters>)query.getResultList();
 		tx.commit();
@@ -73,7 +73,7 @@ public class MovieDAOImp implements MovieDAO{
 
 	public List<Director> findAllDirector(String movieName) {
 		tx.begin();
-		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.name = :movName ");
+		Query query = em.createQuery("SELECT m.artists FROM Movie m where m.title = :movName ");
 		query.setParameter("movName", movieName);
 		List<Director> directors = (List<Director>)query.getResultList();
 		tx.commit();

@@ -10,11 +10,11 @@ import javax.persistence.Entity;
 @DiscriminatorValue("director")
 public class Director extends Artist {
 
+	public Director() {
+	}
 
 	public Director(String name, Date dob, String birthplace, String bio, byte[] picture, List<Movie> movie) {
 		super(name, dob, birthplace, bio, picture, movie);
 	}
 
-	
-	
 }

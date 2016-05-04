@@ -18,27 +18,27 @@ public class ArtistDAOImp implements ArtistDAO {
 
 	public List<Artist> getAllArtist() {
 		tx.begin();
-		Query query = em.createQuery("FROM Artist ");
+		Query query = em.createQuery("Select art From Artist art");
 		List<Artist> artists = query.getResultList();
-		em.close();
+		tx.commit();
 		return artists;
 	}
 
 	public Artist getArtist(int id) {
 		tx.begin();
 		Query query = em.createQuery("SELECT a FROM Artist a WHERE a = :id");
-		query.setParameter(0, id);
+		query.setParameter("id", id);
 		Artist artist = (Artist) query.getSingleResult();
-		em.close();
+		tx.commit();
 		return artist;
 	}
 
 	public List<Artist> getArtist(String name) {
 		tx.begin();
 		Query query = em.createQuery("SELECT a FROM Artist a WHERE a = :name");
-		query.setParameter(0, name);
+		query.setParameter("name", name);
 		List<Artist> artists = query.getResultList();
-		em.close();
+		tx.commit();
 		return artists;
 	}
 

@@ -63,7 +63,7 @@ public class Application {
 		System.out.println("============================================");
 
 		// Name of the character on the movie
-		List<Characters> characters = movService.findCharacters("mov1");
+		List<Characters> characters = movService.findCharacters("mov 1");
 		System.out.println("============================================");
 		for (Characters character : characters) {
 			System.out.println(character.getName());
@@ -71,7 +71,7 @@ public class Application {
 		System.out.println("============================================");
 
 		// Director of the movie
-		List<Director> directors = movService.findDirector("mov1");
+		List<Director> directors = movService.findDirector("mov 1");
 		System.out.println("============================================");
 		for (Director director : directors) {
 			System.out.println(director.getName());

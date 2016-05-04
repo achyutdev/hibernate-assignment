@@ -30,8 +30,12 @@ public abstract class Artist {
 	@Lob
 	private byte[] picture;
 
-	@ManyToMany(mappedBy="artists")
+	@ManyToMany(mappedBy = "artists")
 	private List<Movie> movies;
+
+	public Artist() {
+
+	}
 
 	public Artist(String name, Date dob, String birthplace, String bio, byte[] picture, List<Movie> movie) {
 		this.name = name;
@@ -103,7 +107,5 @@ public abstract class Artist {
 		return "Artist [id=" + id + ", name=" + name + ", dob=" + dob + ", birthplace=" + birthplace + ", bio=" + bio
 				+ ", picture=" + Arrays.toString(picture) + ", movies=" + movies + "]";
 	}
-	
-	
 
 }
