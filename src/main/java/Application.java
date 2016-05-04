@@ -1,85 +1,86 @@
 
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
-import org.apache.log4j.Logger;
-
+import mum.edu.models.Artist;
+import mum.edu.models.Characters;
+import mum.edu.models.Director;
 import mum.edu.models.Genre;
 import mum.edu.models.Movie;
+import mum.edu.service.ArtistService;
+import mum.edu.service.ArtistServiceImpl;
+import mum.edu.service.MovieService;
+import mum.edu.service.MovieServiceImpl;
+import mum.edu.util.DataPopulate;
 
 public class Application {
-	private static Logger logger = Logger.getLogger(Application.class);
-
-	private static final EntityManagerFactory emf;
-
-	static {
-		try {
-			emf = Persistence.createEntityManagerFactory("movieimdb");
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-			throw new ExceptionInInitializerError(ex);
-		}
-	}
 
 	public static void main(String[] args) throws ParseException {
 
-		addData();
-		
-//		queries
+		DataPopulate.populate();
 		
 		
-		emf.close();
-
-	}
-
-	private static void addData() throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-
-		tx.begin();
-
-		// adding movies
-		byte[] poster1 = imageUpload("mov1.jpg");
-		Date releaseDate1 = formatter.parse("12-Jun-2013");
-		Movie mov1 = new Movie("mov 1", poster1, releaseDate1, Genre.ACTION, "mov 1 summary",null);
-
-		byte[] poster2 = imageUpload("mov2.JPG");
-		Date releaseDate2 = formatter.parse("7-Feb-2016");
-		Movie mov2 = new Movie("mov 2", poster2, releaseDate2, Genre.ACTION, "mov 2 summary",null);
-
-		em.persist(mov1);
-		em.persist(mov2);
+//		Name of the movie
+		MovieService movService = new MovieServiceImpl();
 		
-//		Adding artirts 
-		
-
-		tx.commit();
-
-	}
-
-	private static byte[] imageUpload(String name) {
-		byte[] fileData = null;
-		try {
-			Path p = FileSystems.getDefault().getPath("",
-					System.getProperty("user.dir") + "/src/main/resources/" + name);
-
-			fileData = Files.readAllBytes(p);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
+		List<Movie> movies = movService.findAll();
+		System.out.println("============================================");
+		for (Movie movie : movies) {
+			System.out.println(movie);
 		}
-
-		return fileData;
+		System.out.println("============================================");
+		
+		
+//		Genre of the movie
+		List<Movie> movies1 = movService.findAll(Genre.ACTION);
+		System.out.println("============================================");
+		for (Movie movie : movies1) {
+			System.out.println(movie);
+		}
+		System.out.println("============================================");
+		
+//		Rating of the movie
+		List<Movie> movies2 = movService.findAll(9);
+		System.out.println("============================================");
+		for (Movie movie : movies2) {
+			System.out.println(movie);
+		}
+		System.out.println("============================================");
+		
+		
+//		Year of the movie
+		List<Movie> movies3 = movService.findAll("2016");
+		System.out.println("============================================");
+		for (Movie movie : movies2) {
+			System.out.println(movie);
+		}
+		System.out.println("============================================");
+		
+//		Name of the artist
+		ArtistService  artistService = new ArtistServiceImpl();
+		List<Artist> artists = artistService.findAll();
+		System.out.println("============================================");
+		for (Artist artist : artists) {
+			System.out.println(artist);
+		}
+		System.out.println("============================================");
+		
+//		Name of the character on the movie
+		List<Characters> characters = movService.findCharacters("mov1");
+		System.out.println("============================================");
+		for (Characters character : characters) {
+			System.out.println(character.getName());
+		}
+		System.out.println("============================================");
+		
+//		Director of the movie
+		List<Director> directors = movService.findDirector("mov1");
+		System.out.println("============================================");
+		for (Director director : directors) {
+			System.out.println(director.getName());
+		}
+		System.out.println("============================================");
+		
 	}
+
 }

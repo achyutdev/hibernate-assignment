@@ -45,6 +45,7 @@ public class Movie {
 
 	
 	
+
 	public Movie(String title, byte[] poster, Date releaseDate, Genre genre, String summary,List<Artist> artists) {
 		this.title = title;
 		this.poster = poster;
@@ -111,6 +112,13 @@ public class Movie {
 	}
 	
 	
+	public List<Artist> getArtists() {
+		return artists;
+	}
+	
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
+	}
 	
 	
 }

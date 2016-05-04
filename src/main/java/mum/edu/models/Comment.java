@@ -18,7 +18,9 @@ public class Comment {
 	@JoinColumn(name = "movieId")
 	private Movie movie;
 	
-	
+	public Comment(){
+		
+	}
 	
 	
 	public Comment(String comments, Movie movie) {

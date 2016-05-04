@@ -1,7 +1,11 @@
 package mum.edu.DAO;
 
+import java.util.Date;
 import java.util.List;
 
+import mum.edu.models.Characters;
+import mum.edu.models.Director;
+import mum.edu.models.Genre;
 import mum.edu.models.Movie;
 
 public interface MovieDAO {
@@ -10,7 +14,13 @@ public interface MovieDAO {
 
 	public Movie getMovie(int id);
 
-	public void updateMovie(Movie movie);
+	public List<Movie> getAllMovieGenre(Genre genre);
 
-	public void deleteMovie(Movie movie);
+	public List<Movie> getAllMovieRating(int rating);
+
+	public List<Movie> getAllMovieYear(Date date);
+
+	public List<Characters> findAllCharacters(String characterName);
+
+	public List<Director> findAllDirector(String movieName);
 }

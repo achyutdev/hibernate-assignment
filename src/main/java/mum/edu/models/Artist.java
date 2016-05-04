@@ -1,5 +1,6 @@
 package mum.edu.models;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -96,5 +97,13 @@ public abstract class Artist {
 	public void setMovie(List<Movie> movie) {
 		this.movies = movie;
 	}
+
+	@Override
+	public String toString() {
+		return "Artist [id=" + id + ", name=" + name + ", dob=" + dob + ", birthplace=" + birthplace + ", bio=" + bio
+				+ ", picture=" + Arrays.toString(picture) + ", movies=" + movies + "]";
+	}
+	
+	
 
 }
